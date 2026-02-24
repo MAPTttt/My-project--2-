@@ -4,10 +4,24 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    public static Timer Instance;
     private TextMeshPro timerText;
     private float timer;
     private bool timerActive;
-    
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+
+        }
+    }
+
     void Start()
     {
         timerText = GetComponent<TextMeshPro>();
